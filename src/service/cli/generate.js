@@ -67,7 +67,7 @@ module.exports = {
   async run(args) {
     const [count] = args;
     if (count > MAX_MOCKS_COUNT) {
-      console.error(chalk.red(`Не больше 1000 объявлений`));
+      console.error(chalk.red(`Не больше ${MAX_MOCKS_COUNT} объявлений`));
       process.exit(ExitCode.ERROR);
     }
     const sentences = await readContent(FILE_SENTENCES_PATH);
