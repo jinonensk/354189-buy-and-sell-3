@@ -1,7 +1,7 @@
 # Учебный проект «Куплю. Продам» [![Build status][travis-image]][travis-url]
 
 * Студент: [Саша Джинн](https://up.htmlacademy.ru/nodejs/3/user/354189).
-* Наставник: `Неизвестно`.
+* Наставник: [Юрий Кучма](https://htmlacademy.ru/profile/krabaton).
 
 ---
 
