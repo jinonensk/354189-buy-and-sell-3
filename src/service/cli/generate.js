@@ -34,7 +34,11 @@ const PictureRestrict = {
 const readContent = async (filePath) => {
   try {
     const content = await fs.readFile(filePath, `utf8`);
-    return content.trim().split(`\n`);
+    const cleanedContent = content
+      .split(`\n`)
+      .map((str) => str.trim().replace(/\s+/g, ` `))
+      .filter((str) => !!str);
+    return cleanedContent;
   } catch (err) {
     console.error(chalk.red(err));
     return [];
@@ -44,7 +48,7 @@ const readContent = async (filePath) => {
 const getPictureFileName = (number) =>
   number > MAX_ONE_CHAR_NUMBER ? number : `0${number}`;
 
-const generateOffers = (count, titles, categories, sentences) =>
+const generateOffers = ({count, titles, categories, sentences}) =>
   Array(count)
     .fill({})
     .map(() => ({
@@ -76,7 +80,7 @@ module.exports = {
 
     const countOffer = Number.parseInt(count, 10) || DEFAULT_COUNT;
     const content = JSON.stringify(
-        generateOffers(countOffer, titles, categories, sentences)
+        generateOffers({count: countOffer, titles, categories, sentences})
     );
 
     try {
